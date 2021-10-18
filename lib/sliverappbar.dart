@@ -1,9 +1,12 @@
+import 'dart:html';
 import 'dart:math';
 
+import 'package:daraz_app_demo/all.dart';
+import 'package:daraz_app_demo/home.dart';
 import 'package:flutter/material.dart';
 
 class Sliver_appbar extends StatefulWidget {
-  const Sliver_appbar({ Key? key }) : super(key: key);
+  const Sliver_appbar({Key? key}) : super(key: key);
 
   @override
   _Sliver_appbarState createState() => _Sliver_appbarState();
@@ -14,26 +17,43 @@ class _Sliver_appbarState extends State<Sliver_appbar> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: DefaultTabController(
-        length: 2,
-        child: Scaffold(
-          body: CustomScrollView(
-            slivers: [
-              SliverAppBar(
-                expandedHeight: 70,
-                title: Text('Daraz'),
-            leading: IconButton(onPressed: (){}, icon: Icon(Icons.arrow_back)),
-            actions: [
-              IconButton(onPressed: (){}, icon: Icon(Icons.shopping_cart_outlined)),
-              IconButton(onPressed: (){}, icon: Icon(Icons.more_vert))
-            ],
-            bottom: TabBar(tabs: [
-              Tab(text: 'All'),
-              Tab(text: 'Daraz Mall',)
-            ],
+      home: Scaffold(
+        body: DefaultTabController(
+          length: 2,
+          child: NestedScrollView(
+            headerSliverBuilder: (context, value) {
+              return [
+                SliverAppBar(
+                  pinned: false,
+                  expandedHeight: 70,
+                  backgroundColor: Colors.cyan,
+                  title: Text('Walton Accessories'),
+                  leading: IconButton(
+                    onPressed: () {},
+                    icon: Icon(Icons.arrow_back,),
+                  ),
+                  actions: [
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.shopping_cart_outlined),
+                    ),
+                  ],
+                  bottom: TabBar(tabs: [
+
+                    Tab(text: 'Homepage',),
+                    Tab(text: 'All Items',)
+                  ],
+                  ),
+                ),
+              ];
+            },
+            body: TabBarView(
+              children: [
+                Home_page(),
+                All_item(),
+                
+              ],
             ),
-              ),
-            ],
           ),
         ),
       ),

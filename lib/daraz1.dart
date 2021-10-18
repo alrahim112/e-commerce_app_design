@@ -6,13 +6,17 @@ class daraz1 extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(
-          title: Text('Daraz'),
-          leading: IconButton(onPressed: (){}, icon: Icon(Icons.arrow_back)),
-          actions: [
-            IconButton(onPressed: (){}, icon: Icon(Icons.shopping_cart_outlined)),
-            IconButton(onPressed: (){}, icon: Icon(Icons.more_vert))
-          ],
+        body: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            children: [
+              Container(
+                height: 300,
+                width: 500,
+                color: Colors.grey,
+              ),
+            ],
+          ),
         ),
       ),
     );
